@@ -262,6 +262,8 @@ class BaseInlineFormSetMixin(BaseFormSetMixin):
             'fields': self.fields,
             'formfield_callback': self.formfield_callback,
             'fk_name': self.fk_name,
+            # Otherwise only the first initial value will be initialised
+            'extra': len(self.initial) + 1            
         })
         if self.get_form_class():
             kwargs['form'] = self.get_form_class()
